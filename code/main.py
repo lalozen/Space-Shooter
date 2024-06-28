@@ -1,0 +1,31 @@
+import pygame
+import random
+pygame.init()
+
+width = 1280
+height = 720
+
+display_surface = pygame.display.set_mode((width, height))
+
+pygame.display.set_caption('Mygame')
+
+surf = pygame.Surface((100, 100))
+surf.fill((255, 0, 0))
+
+player_surf = pygame.image.load('images/player.png').convert_alpha()
+star_surf = pygame.image.load('images/star.png').convert_alpha()
+
+star_positions = [(random.randint(0, width), random.randint(0, height)) for _ in range(20)]
+
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:b
+            pygame.quit()
+            exit(0)
+    display_surface.fill(('darkgray'))
+    
+    for star_position in star_positions:
+        display_surface.blit(star_surf, star_position)
+    display_surface.blit(player_surf, (100, 100))
+    
+    pygame.display.update()
